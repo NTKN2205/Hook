@@ -1,52 +1,42 @@
-import React from "react";
-
-class UserInfor extends React.Component {
-  state = {
-    name: "Ninh",
-    address: "PY",
-    age: 21,
+import React, { useState } from "react";
+const UserInfor = (props) => {
+  const [name, setname] = useState("");
+  // const [address, setadress] = useState("");
+  const [age, setage] = useState("");
+  const haneleOnChangeInput = (event) => {
+    setname(event.target.value);
   };
-  haneleOnChangeInput = (event) => {
-    this.setState({
-      name: event.target.value,
-    });
+  const haneleOnChangeAge = (event) => {
+    setage(event.target.value);
   };
-  haneleOnChangeAge = (event) => {
-    this.setState({
-      age: event.target.value,
-    });
-  };
-  handSubmit = (event) => {
+  const handSubmit = (event) => {
     event.preventDefault();
-    console.log(this.state);
-    this.props.handleNewUser({
+    props.handleNewUser({
       id: Math.floor(Math.random() * 100 + 1),
-      name: this.state.name,
-      age: this.state.age,
+      name: name,
+      age: age,
     });
   };
-  render() {
-    return (
-      <div>
-        My name is {this.state.name} and I'm {this.state.age}
-        <form onSubmit={(event) => this.handSubmit(event)}>
-          <label>Your Name </label>
-          <input
-            value={this.state.name}
-            type="text"
-            onChange={(event) => this.haneleOnChangeInput(event)}
-          />
-          <label>Age </label>
-          <input
-            value={this.state.age}
-            type="text"
-            onChange={(event) => this.haneleOnChangeAge(event)}
-          />
-          <button>Enter</button>
-        </form>
-      </div>
-    );
-  }
-}
+  return (
+    <div>
+      My name is {name} and I'm {age}
+      <form onSubmit={(event) => handSubmit(event)}>
+        <label>Your Name </label>
+        <input
+          value={name}
+          type="text"
+          onChange={(event) => haneleOnChangeInput(event)}
+        />
+        <label>Age </label>
+        <input
+          value={age}
+          type="text"
+          onChange={(event) => haneleOnChangeAge(event)}
+        />
+        <button>Enter</button>
+      </form>
+    </div>
+  );
+};
 
 export default UserInfor;

@@ -3,6 +3,10 @@ import "./App.scss";
 import { useDispatch, useSelector } from "react-redux";
 import { increaseCounter, decreaseCounter } from "./redux/action/counterAction";
 import MyComponent from "./components/MyComponent";
+import Example from "./HookTest/UseState/Example";
+import TodoList from "./HookTest/UseState/TodoList";
+import TextDisplay from "./HookTest/UseState/TestDisplay";
+import Examples from "./HookTest/UseEffect/ExampleA";
 import React from "react";
 
 class App extends React.Component {
@@ -10,7 +14,11 @@ class App extends React.Component {
     return (
       <div>
         Hello mọi người tôi là Ninh
-        <MyComponent></MyComponent>
+        {/* <MyComponent></MyComponent> */}
+        {/* <Example></Example> */}
+        {/* <TodoList></TodoList> */}
+        {/* <TextDisplay></TextDisplay> */}
+        <Examples></Examples>
       </div>
     );
   }
